@@ -29,7 +29,7 @@ SELECT
 letra,
 fecha,
 num
-FROM tabla_01 ORDER BY letra,num; 
+FROM tabla_01 ORDER BY letra,fecha,num; 
 
 
 INSERT OVERWRITE LOCAL DIRECTORY './output' ROW FORMAT DELIMITED FIELDS TERMINATED BY ','

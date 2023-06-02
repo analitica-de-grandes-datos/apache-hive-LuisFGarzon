@@ -31,9 +31,9 @@ num
 FROM tabla_01)
 select 
 num
-from t1 ORDER BY num asc; 
+from t1 ORDER BY num asc limit 5; 
 
 INSERT OVERWRITE LOCAL DIRECTORY './output' ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-SELECT num FROM tabla_02 limit 5;
+SELECT num FROM tabla_02;
 
 
