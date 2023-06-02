@@ -75,18 +75,21 @@ MAP KEYS TERMINATED BY '#'
 LINES TERMINATED BY '\n';
 LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 
-INSERT OVERWRITE LOCAL DIRECTORY './output' ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-with t1 as(
+DROP TABLE IF EXISTS tabla_01;
+CREATE TABLE tabla_01 AS 
 select
 year(c4) as ano,
 letra
 from
 tbl0
 LATERAL VIEW explode(c5) tbl0 AS letra
-)
+;
+
+INSERT OVERWRITE LOCAL DIRECTORY './output' ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 select
 ano, 
 letra,
 count(*)
-from t1 group by ano,letra
+from tabla_01
+group by ano,letra
 ;

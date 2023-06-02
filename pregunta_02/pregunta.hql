@@ -19,6 +19,8 @@ CREATE TABLE tabla_01 (
     fecha DATE, 
     num INT)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+TBLPROPERTIES ("skip.header.line.count"="0");
+
 
 LOAD DATA LOCAL INPATH 'data.tsv' OVERWRITE INTO TABLE tabla_01;
 
@@ -29,7 +31,8 @@ SELECT
 letra,
 fecha,
 num
-FROM tabla_01 ORDER BY letra,fecha,num; 
+FROM tabla_01 
+ORDER BY letra,fecha,num; 
 
 
 INSERT OVERWRITE LOCAL DIRECTORY './output' ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
