@@ -48,13 +48,12 @@ LOAD DATA LOCAL INPATH 'data.tsv' INTO TABLE t0;
 
 INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-select 
-letra, 
-letras, 
-count(letras)
-from t0
-lateral view
-    explode(c3) t0 as letras, numeros
-lateral view
-    explode(c2) t0 as letra
-group by letra, letras;
+
+SELECT letra, letras, COUNT(letras)
+FROM t0
+LATERAL VIEW
+    EXPLODE(c3) t0 AS letras, numeros
+LATERAL VIEW
+    EXPLODE(c2) t0 AS letra
+GROUP BY letra, letras;
+Footer
