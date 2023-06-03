@@ -79,7 +79,7 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 INSERT OVERWRITE LOCAL DIRECTORY './output' ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' COLLECTION ITEMS TERMINATED BY ':'
 select 
 c2, 
-collect_set(c1) AS c1 
+collect_set(c1) 
 from tbl0 
 group by c2
 ;
