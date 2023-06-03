@@ -26,6 +26,6 @@ LOAD DATA LOCAL INPATH 'data.tsv' OVERWRITE INTO TABLE tabla_01;
 
 
 INSERT OVERWRITE LOCAL DIRECTORY './output' ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-select * from tabla_01 order by letter, num, YEAR(fecha);
+select * from tabla_01 order by letra, num, YEAR(fecha);
 
 
