@@ -46,13 +46,15 @@ CREATE TABLE t0 (
         LINES TERMINATED BY '\n';
 LOAD DATA LOCAL INPATH 'data.tsv' INTO TABLE t0;
 
-DROP TABLE IF EXISTS tabla_01;
-CREATE TABLE tabla_01 AS
-SELECT letras, key, value
-FROM (SELECT letras, c3 FROM t0 LATERAL VIEW EXPLODE(c2) t0 AS letras) data1
-LATERAL VIEW EXPLODE(c3) data1;
-
-INSERT OVERWRITE LOCAL DIRECTORY './output'
+INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-SELECT letras, key, COUNT(1)
-FROM tabla_01 GROUP BY letras, key;
+select 
+letra, 
+letras, 
+count(letras)
+from t0
+lateral view
+    explode(c3) t0 as letras, numeros
+lateral view
+    explode(c2) t0 as letra
+group by letra, letras;
