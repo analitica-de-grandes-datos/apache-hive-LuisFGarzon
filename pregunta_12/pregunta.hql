@@ -53,7 +53,7 @@ letra,
 letras,
 count(letras) AS conteo
 from t0
-lateral view explode(c2) t0 as letra
-lateral view explode(c3) t0 as letras, num
+    lateral view explode(c2) t0 as letra
+    lateral view explode(c3) t0 as letras, num
 group by letra, letras
 ;
