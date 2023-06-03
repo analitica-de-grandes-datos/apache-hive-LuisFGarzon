@@ -25,21 +25,7 @@ TBLPROPERTIES ("skip.header.line.count"="0");
 LOAD DATA LOCAL INPATH 'data.tsv' OVERWRITE INTO TABLE tabla_01;
 
 
-DROP TABLE IF EXISTS tabla_02;
-CREATE TABLE tabla_02 AS 
-SELECT 
-letra,
-fecha,
-num
-FROM tabla_01 
-ORDER BY letra,year(fecha),num; 
-
-
 INSERT OVERWRITE LOCAL DIRECTORY './output' ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-SELECT 
-letra,
-fecha,
-num 
-FROM tabla_02;
+select * from tabla_01 order by letter, num, YEAR(fecha);
 
 
