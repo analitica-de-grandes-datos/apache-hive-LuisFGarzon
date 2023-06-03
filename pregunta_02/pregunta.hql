@@ -18,7 +18,7 @@ CREATE TABLE tabla_01 (
     letra STRING, 
     fecha DATE, 
     num INT)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
 TBLPROPERTIES ("skip.header.line.count"="0");
 
 
